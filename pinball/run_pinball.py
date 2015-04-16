@@ -190,7 +190,10 @@ def main():
     if options.mode == 'ui':
         hostport = '%s:%d' % (socket.gethostname(), PinballConfig.UI_PORT)
         cache_thread.start_cache_thread(DbStore())
-        if not PinballConfig.UI_HOST:
+        if PinballConfig.UI_HOST:
+            hostport = "{host}:{port}".format(host=PinballConfig.UI_HOST,
+                                              port=PinballConfig.UI_PORT)
+        else:
             hostport = 'localhost:%d' % PinballConfig.UI_PORT
 
         # Disable reloader to prevent auto refresh on file changes.  The

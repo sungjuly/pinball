@@ -359,7 +359,7 @@ def signin(request):
 def auth_return(request):
     oauth2_flow = oauth2.OAuth2Flow()
     domains = oauth2_flow.get_domains()
-    flow = oauth2.OAuth2Flow().get_flow(domains[1])
+    flow = oauth2.OAuth2Flow().get_flow(oauth2_flow.domain)
     # disable SSL certificate validation for exchanging access code
     http = httplib2.Http()
     http.disable_ssl_certificate_validation = True

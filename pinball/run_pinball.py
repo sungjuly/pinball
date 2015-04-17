@@ -188,7 +188,6 @@ def main():
         emailer = Emailer(socket.gethostname(), PinballConfig.UI_PORT)
 
     if options.mode == 'ui':
-        hostport = '%s:%d' % (socket.gethostname(), PinballConfig.UI_PORT)
         cache_thread.start_cache_thread(DbStore())
         if PinballConfig.UI_HOST:
             hostport = "{host}:{port}".format(host=PinballConfig.UI_HOST,
